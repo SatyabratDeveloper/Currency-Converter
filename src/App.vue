@@ -4,6 +4,7 @@ import Input from './components/Input.vue'
 
 <template>
   <h1>Currency Converter</h1>
+  <!-- Input component -->
   <Input />
 </template>
 

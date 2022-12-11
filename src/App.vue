@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Input from './components/input.vue'
+import Input from './components/Input.vue'
 </script>
 
 <template>
@@ -21,5 +21,4 @@ h1 {
   text-align: center;
   width: 100%;
 }
-
 </style>

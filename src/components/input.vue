@@ -1,8 +1,8 @@
 <template>
   <div>
-    <select id="from" v-model="converterStore.from">
+    <select id="from" v-model="from">
       <option
-        v-for="country in converterStore.fromCountryList"
+        v-for="country in fromCountryList"
         :key="country.id"
         :value="country"
       >
@@ -10,14 +10,14 @@
       </option>
     </select>
     <!-- from input -->
-    <input type="number" v-model="converterStore.fromAmount" />
+    <input type="number" v-model="fromAmount" />
   </div>
 
   <!-- to country selector -->
   <div>
-    <select id="to" v-model="converterStore.to">
+    <select id="to" v-model="to">
       <option
-        v-for="country in converterStore.toCountryList"
+        v-for="country in toCountryList"
         :key="country.id"
         :value="country"
       >
@@ -25,17 +25,19 @@
       </option>
     </select>
     <!-- to input -->
-    <input type="number" v-model="converterStore.toAmount" :disabled="true" />
+    <input type="number" v-model="toAmount" :disabled="true" />
   </div>
 
-  <button @click="converterStore.currConverter">Convert</button>
+  <button @click="converterStore.currencyConverter">Convert</button>
 </template>
 
 <script setup lang="ts">
 import { useConverterStore } from "@/stores/converter";
+import { storeToRefs } from "pinia";
 
 // defining store
 const converterStore = useConverterStore();
+const { from, to, fromAmount, toAmount, data, fromCountryList, toCountryList } = storeToRefs(converterStore)
 </script>
 
 <style scoped>

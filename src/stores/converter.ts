@@ -35,10 +35,10 @@ export const useConverterStore = defineStore('store', () => {
   const toCountryList = computed(() => data.filter((d) => d.country !== from.value.country))
 
   // onSubmit function - calculates the currency conversion
-  function currConverter() {
+  function currencyConverter(): void {
       fromUSD = from.value.rate >= 1 ? fromAmount.value / from.value.rate : fromAmount.value * from.value.rate;
       toAmount.value = to.value.rate >=1 ? fromUSD * to.value.rate : fromUSD / to.value.rate;
   }
 
-  return { from, to, fromAmount, toAmount, data, currConverter, fromCountryList, toCountryList }
+  return { from, to, fromAmount, toAmount, data, currencyConverter, fromCountryList, toCountryList }
 })

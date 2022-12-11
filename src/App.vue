@@ -2,34 +2,31 @@
 import { useConverterStore } from './stores/converter'
 
 // defining store
-const store = useConverterStore()
+const converterStore = useConverterStore()
 </script>
 
 <template>
   <h1>Currency Converter</h1>
 
-  <!-- form for user input -->
-  <form @click="store.onSubmit">
-
     <!-- from country selector -->
     <div>
-      <select id="from" v-model="store.from">
-        <option v-for="country in store.data" :key="country.id" :value="country">{{ country.country }}</option>
+      <select id="from" v-model="converterStore.from">
+        <option v-for="country in converterStore.fromCountryList" :key="country.id" :value="country">{{ country.country }}</option>
       </select>
       <!-- from input -->
-      <input type="number" v-model="store.fromAmount">
+      <input type="number" v-model="converterStore.fromAmount">
     </div>
 
     <!-- to country selector -->
     <div>
-      <select id="to" v-model="store.to">
-        <option v-for="country in store.data" :value="country">{{ country.country }}</option>
+      <select id="to" v-model="converterStore.to">
+        <option v-for="country in converterStore.toCountryList" :key="country.id" :value="country">{{ country.country }}</option>
       </select>
       <!-- to input -->
-      <input type="number" v-model="store.toAmount" :disabled="true">
+      <input type="number" v-model="converterStore.toAmount" :disabled="true">
     </div>
 
-  </form>
+    <button @click="converterStore.currConverter">Convert</button>
 </template>
 
 <style>
